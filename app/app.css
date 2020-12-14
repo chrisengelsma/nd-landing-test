@@ -1,0 +1,183 @@
+body, html {
+    overflow: hidden;
+}
+
+body {
+    font: 100% / 1.5 Arial;
+}
+
+.parallax {
+    height: 500px; /* fallback for older browsers */
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-perspective: 302px;
+    perspective: 302px;
+}
+
+.parallax-group {
+    position: relative;
+    height: 500px; /* fallback for older browsers */
+    height: 100vh;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.parallax-layer--fore {
+    -webkit-transform: translateZ(90px) scale(.7);
+    transform: translateZ(90px) scale(.7);
+    z-index: 1;
+}
+
+.parallax-layer--base {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: 2;
+}
+
+.parallax-layer--back {
+    -webkit-transform: translateZ(-300px) scale(2.01);
+    transform: translateZ(-300px) scale(2.01);
+    z-index: 3;
+}
+
+.parallax-layer--deep {
+    -webkit-transform: translateZ(-600px) scale(3.01);
+    transform: translateZ(-600px) scale(3.01);
+    z-index: 4;
+}
+
+
+/* Debugger styles */
+
+.debug {
+    position: fixed;
+    top: 0;
+    left: .5em;
+    z-index: 999;
+    background: rgba(0, 0, 0, .85);
+    color: #fff;
+    padding: .5em;
+    border-radius: 0 0 5px 5px;
+}
+
+.debug-on .parallax-group {
+    -webkit-transform: translate3d(800px, 0, -800px) rotateY(30deg);
+    transform: translate3d(700px, 0, -800px) rotateY(30deg);
+}
+
+.debug-on .parallax-layer {
+    box-shadow: 0 0 0 2px #000;
+    opacity: 0.9;
+}
+
+.parallax-group {
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+}
+
+/* Styles */
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+}
+
+.icon-circle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    background: tomato;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+}
+
+/*.col:nth-child(2n+1) {*/
+/*    background: red;*/
+/*}*/
+
+
+.parallax {
+    font-size: 200%;
+}
+
+/* centre the content in the parallax layers */
+.title {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
+#group1 {
+    z-index: 3; /* slide under group 2 */
+}
+
+#group1 .parallax-layer--deep {
+    height: 120%;
+    background: rgb(142, 175, 209);
+    background: -moz-linear-gradient(315deg, rgba(142, 175, 209, 1) 11%, rgba(115, 65, 247, 1) 100%);
+    background: -webkit-linear-gradient(315deg, rgba(142, 175, 209, 1) 11%, rgba(115, 65, 247, 1) 100%);
+    background: linear-gradient(315deg, rgba(142, 175, 209, 1) 11%, rgba(115, 65, 247, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#8eafd1", endColorstr="#7341f7", GradientType=1);
+}
+
+#group2 {
+    z-index: 5; /* slide over group 1 */
+    margin-top: 100%;
+}
+
+#group2 .parallax-layer--back {
+    color: white;
+    background-color: #212121;
+}
+
+#group2 .parallax-layer--base {
+    color: white;
+    /*background-color: #212121;*/
+}
+

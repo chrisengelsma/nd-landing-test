@@ -1,0 +1,21 @@
+{
+  "name": "angular-seed",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "^1.7.5",
+    "angular-loader": "^1.7.5",
+    "angular-ui-router": "^1.0.28",
+    "font-awesome": "^4.7.0"
+  },
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "http-server": "^0.11.1"
+  },
+  "scripts": {
+    "postinstall": "npm run copy-libs",
+    "copy-libs": "cpx \"node_modules/{font-awesome,angular,angular-*,html5-boilerplate/dist}/**/*\" app/lib -C",
+    "prestart": "npm install",
+    "start": "http-server -a localhost -p 8000 -c-1 ./app"
+  }
+}

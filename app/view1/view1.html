@@ -1,0 +1,75 @@
+<div class="debug">
+  <label>
+    Debug {{ vm.debugMode }}
+    <input type="checkbox" ng-model="vm.debugMode">
+  </label>
+</div>
+
+<div ng-class="{ 'debug-on': vm.debugMode }">
+  <div class="parallax">
+
+    <div id="group1" class="parallax-group">
+      <div class="parallax-layer parallax-layer--deep">
+        <div class="title">Notional Documents</div>
+      </div>
+    </div>
+
+    <div id="group2" class="parallax-group">
+      <div class="parallax-layer parallax-layer--back"></div>
+
+      <div class="parallax-layer parallax-layer--base">
+        <div class="container">
+
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="fa-3x icon-circle">
+                  <i class="fa-inverse fa fa-users"></i>
+                </div>
+              </div>
+              <div class="row">
+                <p class="description">Real-time collaboration with different users</p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row">
+                <div class="fa-3x icon-circle">
+                  <i class="fa fa-pencil"></i>
+                </div>
+              </div>
+              <div class="row">
+                <p class="description">Something</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="fa-3x icon-circle">
+                  <i class="fa fa-space-shuttle"></i>
+                </div>
+              </div>
+              <div class="row">
+                <p class="description">Something else</p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row">
+                <div class="fa-3x icon-circle">
+                  <i class="fa fa-microchip"></i>
+                </div>
+              </div>
+              <div class="row">
+                <p class="description">Technology!</p>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
