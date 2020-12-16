@@ -1,7 +1,7 @@
 {
-  "name": "angular-seed",
+  "name": "nd-landing-test",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "dependencies": {
     "angular": "^1.7.5",
     "angular-loader": "^1.7.5",
@@ -11,12 +11,26 @@
   },
   "devDependencies": {
     "cpx": "^1.5.0",
-    "http-server": "^0.11.1"
+    "http-server": "^0.11.1",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-useref": "^3.0.4",
+    "gulp-flatten": "^0.4.0",
+    "gulp-if": "^2.0.0",
+    "gulp-cssnano": "^2.1.0",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-cache": "^0.4.1",
+    "gulp-gh-pages": "^0.5.4",
+    "run-sequence": "^1.1.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-sass": "^3.0.0",
+    "del": "^2.0.2",
+    "browser-sync": "^2.26.13"
   },
   "scripts": {
     "postinstall": "npm run copy-libs",
-    "copy-libs": "cpx \"node_modules/{font-awesome,angular,angular-*,html5-boilerplate/dist}/**/*\" app/lib -C",
+    "copy-libs": "cpx \"node_modules/{angular,angular-*,html5-boilerplate/dist}/**/*\" app/lib -C",
     "prestart": "npm install",
-    "start": "http-server -a localhost -p 8000 -c-1 ./app",
+    "start": "http-server -a localhost -p 8000 -c-1 ./app"
   }
 }
