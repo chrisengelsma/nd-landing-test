@@ -89,17 +89,14 @@ gulp.task('clean:dist', function () {
 
 // Deploy
 
-gulp.task('inject-base-href', function () {
-  return gulp.src('dist/index.html')
+gulp.task('deploy-gh-pages', function () {
+  return gulp.src([ 'dist/**/*' ])
     .pipe(replace('<base href="/">', function (match) {
       return '<base href="https://chrisengelsma.github.io/nd-landing-test/">';
     }))
-    .pipe(gulp.dest('.publish'));
-});
-
-gulp.task('deploy-gh-pages', function () {
-  return gulp.src([ 'dist/**/*', '!dist/index.html' ])
-    .pipe(deploy());
+    .pipe(deploy({
+      force: true
+    }));
 });
 
 // Build Sequences
@@ -114,5 +111,5 @@ gulp.task('build', function (callback) {
 });
 
 gulp.task('deploy', function(callback) {
-  runSequence('build', 'inject-base-href', 'deploy-gh-pages', callback);
+  runSequence('build', 'deploy-gh-pages', callback);
 });
