@@ -92,7 +92,7 @@ gulp.task('clean:dist', function () {
 gulp.task('deploy-gh-pages', function () {
   return gulp.src([ 'dist/**/*' ])
     .pipe(replace('<base href="/">', function (match) {
-      return '<base href="https://chrisengelsma.github.io/nd-landing-test/">';
+      return '<base href="http://chrisengelsma.github.io/nd-landing-test/">';
     }))
     .pipe(deploy({
       force: true
