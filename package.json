@@ -17,6 +17,7 @@
     "gulp-useref": "^3.0.4",
     "gulp-flatten": "^0.4.0",
     "gulp-if": "^2.0.0",
+    "gulp-replace": "^1.0.0",
     "gulp-cssnano": "^2.1.0",
     "gulp-imagemin": "^2.3.0",
     "gulp-cache": "^0.4.1",
@@ -28,8 +29,6 @@
     "browser-sync": "^2.26.13"
   },
   "scripts": {
-    "postinstall": "npm run copy-libs",
-    "copy-libs": "cpx \"node_modules/{angular,angular-*,html5-boilerplate/dist}/**/*\" app/lib -C",
     "prestart": "npm install",
     "start": "http-server -a localhost -p 8000 -c-1 ./app"
   }

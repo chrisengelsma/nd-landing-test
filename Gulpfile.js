@@ -10,6 +10,7 @@ const cssnano = require('gulp-cssnano');
 const imagemin = require('gulp-imagemin');
 const cache = require('gulp-cache');
 const deploy = require('gulp-gh-pages');
+const replace = require('gulp-replace');
 const del = require('del');
 const runSequence = require('run-sequence');
 const flatten = require('gulp-flatten');
@@ -88,8 +89,16 @@ gulp.task('clean:dist', function () {
 
 // Deploy
 
-gulp.task('deploy', function () {
-  return gulp.src('./dist/**/*')
+gulp.task('inject-base-href', function () {
+  return gulp.src('dist/index.html')
+    .pipe(replace('<base href="/">', function (match) {
+      return '<base href="https://chrisengelsma.github.io/nd-landing-test/">';
+    }))
+    .pipe(gulp.dest('.publish'));
+});
+
+gulp.task('deploy-gh-pages', function () {
+  return gulp.src([ 'dist/**/*', '!dist/index.html' ])
     .pipe(deploy());
 });
 
@@ -102,4 +111,8 @@ gulp.task('default', function (callback) {
 
 gulp.task('build', function (callback) {
   runSequence('clean:dist', 'sass', [ 'useref', 'images', 'files' ], callback);
+});
+
+gulp.task('deploy', function(callback) {
+  runSequence('build', 'inject-base-href', 'deploy-gh-pages', callback);
 });
