@@ -49,7 +49,7 @@ gulp.task('watch', function () {
 // Optimizing CSS and JavaScript 
 gulp.task('useref', function () {
 
-  return gulp.src(['app/**/*.html', '!app/lib/**/*'])
+  return gulp.src([ 'app/**/*.html', '!app/lib/**/*' ])
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
     .pipe(gulpIf('*.css', cssnano()))
@@ -64,6 +64,11 @@ gulp.task('images', function () {
     .pipe(gulp.dest('dist/assets'));
 });
 
+// Copying other important files
+gulp.task('files', function () {
+  return gulp.src([ '.htaccess' ])
+    .pipe(gulp.dest('dist'));
+});
 // Copying fonts
 // gulp.task('fonts', function () {
 //   return gulp.src('app/lib/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)')
@@ -83,7 +88,7 @@ gulp.task('clean:dist', function () {
 
 // Deploy
 
-gulp.task('deploy', function() {
+gulp.task('deploy', function () {
   return gulp.src('./dist/**/*')
     .pipe(deploy());
 });
@@ -96,5 +101,5 @@ gulp.task('default', function (callback) {
 });
 
 gulp.task('build', function (callback) {
-  runSequence('clean:dist', 'sass', [ 'useref', 'images' ], callback);
+  runSequence('clean:dist', 'sass', [ 'useref', 'images', 'files' ], callback);
 });
