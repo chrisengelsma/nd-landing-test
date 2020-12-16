@@ -1,10 +1,31 @@
 body, html {
     overflow: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
     font: 100% / 1.5 Arial;
 }
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.scroll-icon-wrapper {
+    position: absolute;
+    bottom: 0;
+    right: 40px;
+    display: block;
+    opacity: .5;
+    color: white;
+}
+
+.scroll-icon-wrapper:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
 
 .parallax {
     height: 500px; /* fallback for older browsers */
@@ -13,6 +34,13 @@ body {
     overflow-y: auto;
     -webkit-perspective: 302px;
     perspective: 302px;
+
+    background: rgb(142,175,209);
+    background: -moz-linear-gradient(315deg, rgba(142,175,209,1) 11%, rgba(65,136,247,1) 100%);
+    background: -webkit-linear-gradient(315deg, rgba(142,175,209,1) 11%, rgba(65,136,247,1) 100%);
+    background: linear-gradient(315deg, rgba(142,175,209,1) 11%, rgba(65,136,247,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#8eafd1",endColorstr="#4188f7",GradientType=1);
+
 }
 
 .parallax-group {
@@ -127,16 +155,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-content: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
     padding: 24px;
 }
 
-/*.col:nth-child(2n+1) {*/
-/*    background: red;*/
-/*}*/
-
+.full-height {
+    height: 100vh;
+}
 
 .parallax {
     font-size: 200%;
@@ -152,6 +179,42 @@ body {
     transform: translate(-50%, -50%);
 }
 
+.emphasize {
+    font-weight: bold;
+}
+
+ul {
+    list-style: none;
+}
+
+.preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+}
+
+.big-text {
+    font-size: 48pt;
+}
+
+.preview-img {
+    width: 726px;
+    height: 370px;
+    background: url('overview.gif') center center no-repeat;
+    background-size: contain;
+    box-shadow: 0 30px 40px -25px rgba(0, 0, 0, 1);
+
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform: perspective(2000px) rotate3d(0, 1, 0, -30deg);
+
+
+    animation: fadeInDrop 1s;
+}
 
 #group1 {
     z-index: 3; /* slide under group 2 */
@@ -159,25 +222,33 @@ body {
 
 #group1 .parallax-layer--deep {
     height: 120%;
-    background: rgb(142, 175, 209);
-    background: -moz-linear-gradient(315deg, rgba(142, 175, 209, 1) 11%, rgba(115, 65, 247, 1) 100%);
-    background: -webkit-linear-gradient(315deg, rgba(142, 175, 209, 1) 11%, rgba(115, 65, 247, 1) 100%);
-    background: linear-gradient(315deg, rgba(142, 175, 209, 1) 11%, rgba(115, 65, 247, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#8eafd1", endColorstr="#7341f7", GradientType=1);
-}
+    }
 
 #group2 {
     z-index: 5; /* slide over group 1 */
-    margin-top: 100%;
-}
-
-#group2 .parallax-layer--back {
+    /*margin-top: 100%;*/
     color: white;
-    background-color: #212121;
 }
 
 #group2 .parallax-layer--base {
-    color: white;
-    /*background-color: #212121;*/
+    background-color: #212121;
+}
+
+#group2 .parallax-layer--fore {
+}
+
+
+/* Animations */
+
+@keyframes fadeInDrop {
+    from {
+        opacity: 0;
+        transform: perspective(2000px) translateY(-30px) rotate3d(0, 1, 0, -10deg);
+    }
+    to {
+        opacity: 1;
+        transform: perspective(2000px) translateY(0) rotate3d(0, 1, 0, -30deg);
+        box-shadow: 0 30px 40px -25px rgba(0, 0, 0, 1);
+    }
 }
 

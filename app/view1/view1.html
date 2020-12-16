@@ -6,18 +6,46 @@
 </div>
 
 <div ng-class="{ 'debug-on': vm.debugMode }">
-  <div class="parallax">
+  <div class="parallax" du-scroll-container>
 
     <div id="group1" class="parallax-group">
-      <div class="parallax-layer parallax-layer--deep">
-        <div class="title">Notional Documents</div>
+      <div class="parallax-layer parallax-layer--back">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="big-text">
+                <p class="emphasize">Notional Documents</p>
+                <ul>
+                  <li>is a new way to collaborate.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col">
+              <div class="preview">
+                <div class="preview-img"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="parallax-layer parallax-layer--base">
+          <div class="scroll-icon-wrapper">
+            <a href="#group2" du-smooth-scroll>
+              <i class="fa fa-4x fa-caret-down"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 
     <div id="group2" class="parallax-group">
-      <div class="parallax-layer parallax-layer--back"></div>
 
-      <div class="parallax-layer parallax-layer--base">
+
+      <div class="parallax-layer parallax-layer--base"></div>
+
+
+      <div class="parallax-layer parallax-layer--fore">
         <div class="container">
 
           <div class="row">
@@ -69,6 +97,16 @@
 
         </div>
       </div>
+
+
+      <div class="parallax-layer parallax-layer--fore">
+        <div class="scroll-icon-wrapper">
+          <a href="#group1" du-smooth-scroll>
+            <i class="fa fa-4x fa-caret-up"></i>
+          </a>
+        </div>
+      </div>
+
     </div>
 
   </div>

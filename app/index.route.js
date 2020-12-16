@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('myApp')
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
       $stateProvider
         .state('main', {
           url: '/main',
@@ -13,6 +13,8 @@
 
       $urlRouterProvider.when('/', '/main');
       $urlRouterProvider.otherwise('/main');
+
+      $locationProvider.html5Mode(true);
     });
 
 } )();

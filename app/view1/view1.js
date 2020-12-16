@@ -1,6 +1,8 @@
 ( function () {
   'use strict'
 
+  View1Controller.$inject = [];
+
   function View1Controller() {
     var vm = this;
     vm.debugMode = false;
