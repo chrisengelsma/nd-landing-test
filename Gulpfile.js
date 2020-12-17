@@ -9,8 +9,6 @@ const gulpIf = require('gulp-if');
 const cssnano = require('gulp-cssnano');
 const imagemin = require('gulp-imagemin');
 const cache = require('gulp-cache');
-const deploy = require('gulp-gh-pages');
-const replace = require('gulp-replace');
 const del = require('del');
 const runSequence = require('run-sequence');
 const flatten = require('gulp-flatten');
@@ -87,16 +85,6 @@ gulp.task('clean:dist', function () {
   return del.sync([ 'dist/**/*', '!dist/assets' ]);
 });
 
-// Deploy
-
-gulp.task('deploy-gh-pages', function () {
-  return gulp.src([ 'dist/**/*' ])
-    .pipe(replace('<base href="/">', function (match) {
-      return '<base href="https://chrisengelsma.github.io/nd-landing-test/">';
-    }))
-    .pipe(deploy());
-});
-
 // Build Sequences
 // ---------------
 
@@ -106,8 +94,4 @@ gulp.task('default', function (callback) {
 
 gulp.task('build', function (callback) {
   runSequence('clean:dist', 'sass', [ 'useref', 'images', 'files' ], callback);
-});
-
-gulp.task('deploy', function(callback) {
-  runSequence('build', 'deploy-gh-pages', callback);
 });
